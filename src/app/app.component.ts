@@ -7,7 +7,9 @@ import { Keg } from './models/keg.model'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'Keg Town';
+
+  editKeg = null;
 
   kegs: Keg[] = [
     new Keg(3.4, 'banquet', 'coors', 3),
@@ -19,6 +21,10 @@ export class AppComponent {
     let newKeg: Keg = new Keg(alcoholContent, beerName, beerBrand, parseFloat(beerPrice))
 
     this.kegs.push(newKeg);
+  }
+
+  kegEdit(keg) {
+    this.editKeg = keg;
   }
 
 
