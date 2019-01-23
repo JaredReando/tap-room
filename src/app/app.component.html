@@ -29,9 +29,10 @@
       </div>
     </div>
     <button (click)="someMethod(alcoholContent, beerName, beerBrand, beerPrice)" type="button" class="btn btn-primary" pattern="[0-9.]">Add Keg</button>
+    <button (click)="checkKegs(); mainShow=false; lowShow=true" type="button" class="btn btn-primary">Low Kegs</button>
   </form>
 
-    <div >
+    <div *ngIf="mainShow" class=div.table id="fullTable">
       <table class="table table-striped">
         <thead>
           <tr>
@@ -40,6 +41,8 @@
             <th scope='col'>Name</th>
             <th scope="col">Brand</th>
             <th scope="col">Price</th>
+            <th scope="col">Pints</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
@@ -50,6 +53,37 @@
             <td>{{keg.name}}</td>
             <td>{{keg.brand}}</td>
             <td>${{keg.price.toFixed(2)}}</td>
+            <td>{{keg.pints}}</td>
+            <th scope='row'><button class="btn btn-danger" (click)="kegSell(keg); checkKegs()">Sell</button></th>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="lowShow" class=div.table id="fullTable">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">%</th>
+            <th scope='col'>Name</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Price</th>
+            <th scope="col">Pints</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let keg of lowKegs">
+            <th scope='row'><button class="btn btn-success" (click)="kegEdit(keg)">Edit</button></th>
+            <td>{{keg.alcoholContent.toFixed(2)}}%</td>
+            <td>{{keg.name}}</td>
+            <td>{{keg.brand}}</td>
+            <td>${{keg.price.toFixed(2)}}</td>
+            <td>{{keg.pints}}</td>
+            <th scope='row'><button class="btn btn-danger" (click)="kegSell(keg); checkKegs()">Sell</button></th>
           </tr>
 
         </tbody>
