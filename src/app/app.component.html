@@ -32,3 +32,28 @@
   <button (click)="someMethod(alcoholContent, beerName, beerBrand, beerPrice)" type="button" class="btn btn-primary">Add Keg</button>
 </form>
 </div>
+
+<div >
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">%</th>
+        <th scope='col'>Name</th>
+        <th scope="col">Brand</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr *ngFor="let keg of kegs">
+        <th scope='row'>
+        <td>{{keg.alcoholContent}}%</td>
+        <td>{{keg.name}}</td>
+        <td>{{keg.brand}}</td>
+        <td>${{keg.price.toFixed(2)}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>

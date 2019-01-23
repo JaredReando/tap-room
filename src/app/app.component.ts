@@ -15,8 +15,8 @@ export class AppComponent {
     new Keg(1.2, 'BEER', 'Natty Ice', 1.25)
   ]
 
-  someMethod(alcoholContent: number, beerName: string, beerBrand: string, beerPrice: number) {
-    let newKeg: Keg = new Keg(alcoholContent, beerName, beerBrand, beerPrice)
+  someMethod(alcoholContent: number, beerName: string, beerBrand: string, beerPrice: any) {
+    let newKeg: Keg = new Keg(alcoholContent, beerName, beerBrand, parseFloat(beerPrice))
 
     this.kegs.push(newKeg);
   }
